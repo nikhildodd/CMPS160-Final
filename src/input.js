@@ -1,0 +1,151 @@
+var _inputHandler = null;
+      var perspectiveMode = true;
+      var orthoMode = false;
+/**
+ * Specifies a Input Handler. Used to parse input events from a HTML page.
+ *
+ * @author Lucas N. Ferreira
+ * @this {Scene}
+ */
+class InputHandler {
+    /**
+     * Initializes the event handeling functions within the program.
+     */
+
+    constructor(canvas, scene, camera) {
+      this.canvas = canvas;
+      this.scene  = scene;
+      this.camera = camera;
+      this.zoom = 1;
+      var mouseDown = false;
+      _inputHandler = this;
+      this.deltaX = 0;
+      this.deltaY = 0;
+      // Mouse Events
+      this.canvas.onmousedown = function(ev) { 
+        _inputHandler.mouseClick(ev);
+        mouseDown = true;
+      }
+      this.canvas.onmouseup = function(ev){
+        mouseDown = false;
+      }
+
+      this.canvas.onmousemove = function(ev) { 
+        if(mouseDown){
+          _inputHandler.mouseMove(ev);
+          } 
+
+      }
+      this.canvas.onwheel = function(ev) {
+        console.log("mouse scrolled");
+       _inputHandler.mouseWheel(ev); 
+     };
+
+      // Keyboard Events
+      document.addEventListener('keydown', function(ev) { _inputHandler.keyDown(ev); }, false);
+      document.addEventListener('keyup',   function(ev) { _inputHandler.keyUp(ev);   }, false);
+
+
+    }
+    //function called upon mouse scroll;
+    mouseWheel(ev) {
+      this.zoom +=0.1;
+      console.log("ZOOM" + this.zoom);
+    //  this.camera.zoom(this.zoom);
+
+
+    }
+    /**
+     * Function called upon mouse click.
+     */
+    mouseClick(ev) {
+        // Print x,y coordinates.
+        console.log(ev.clientX, ev.clientY);
+
+
+    }
+
+    mouseMove(ev) {
+        var movementX = ev.movementX;
+        console.log("movementX", movementX);
+
+        var movementY = ev.movementY;
+        console.log("movementY", movementY);
+
+        this.camera.pan(-movementY/12);
+        this.camera.tilt(movementX/12);
+      
+        
+    }
+
+    keyUp(ev) {
+        var keyName = event.key;
+        console.log("key up", keyName);
+    }
+
+    keyDown(ev) {
+        var keyName = event.key;
+        console.log("key down", keyName);
+
+        if(keyName == "a") {
+            this.camera.truck(-1);
+        }
+        else if(keyName == "d") {
+            this.camera.truck(1);
+        }else if(keyName == "w"){
+            this.camera.dolly(-1);
+        }else if(keyName == "s"){
+            this.camera.dolly(1);
+        }else if(keyName == "z"){
+            if(perspectiveMode){
+              perspectiveMode = false;
+              orthoMode = true;
+              this.camera.changeMode(perspectiveMode);
+            }else if(orthoMode){
+              orthoMode = false;
+              perspectiveMode = true;
+              this.camera.changeMode(perspectiveMode);
+
+            }
+
+        }
+    }
+
+        /**
+     * Function called to read a selected file.
+     */
+    readSelectedFile() {
+        var fileReader = new FileReader();
+        var objFile = document.getElementById("fileInput").files[0];
+
+        if (!objFile) {
+            alert("OBJ file not set!");
+            return;
+        }
+
+        fileReader.readAsText(objFile);
+        fileReader.onloadend = function() {
+            alert(fileReader.result);
+        }
+    }
+
+    readTexture(src, onTexLoad) {
+        // Create the image object
+        var image = new Image();
+        if (!image) {
+          console.log('Failed to create the image object');
+          return false;
+        }
+
+        // Register the event handler to be called on loading an image
+        image.onload = function() {
+            _inputHandler.image = image;
+            onTexLoad(image);
+        };
+
+        // Tell the browser to load an image
+        image.src = src
+        return true;
+    }
+
+}

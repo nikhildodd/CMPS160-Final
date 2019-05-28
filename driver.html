@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+      <meta charset="utf-8"/>
+      <title> MAZE </title>
+  </head>
+<!-- <body style = "background-color:orange;">
+ -->
+  <body onload = "main()">
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+    <br>
+    CONTROLS:
+<br>
+<LI>W moves camera forward.</LI>
+<LI>A moves camera to the left</LI>
+<LI>S moves camera backwards</LI>
+<LI>D moves camera to the right.</LI>
+<br>
+<LI>Camera can be rotated with the mouse.</LI>
+<br>
+<LI>Z switches between orthographic and perspective camera</LI>
+</UL>
+
+    <!-- Include external libs -->
+    <script src = "lib/webgl-utils.js"></script>
+    <script src = "lib/webgl-render.js"></script>
+    <script src = "lib/webgl-debug.js"></script>
+    <script src = "lib/webgl-loader.js"></script>
+    <script src = "lib/cuon-utils.js"></script>
+    <script src = "lib/cuon-matrix.js"></script>
+
+    <!-- Include shaders -->
+    <script src = "src/graphics/shaders/shader.js"></script>
+    <script src = "src/graphics/shaders/asg4.js"></script>
+
+    <!-- Include Base code -->
+    <script src = "src/graphics/geometry/vertex.js"></script>
+    <script src = "src/graphics/geometry/geometry.js"></script>
+    <script src = "src/graphics/geometry/shapes/square.js"></script>
+    <script src = "src/graphics/geometry/shapes/walls.js"></script>
+    <script src = "src/graphics/geometry/shapes/skyCube.js"></script>
+    <script src = "src/graphics/geometry/shapes/sphere.js"></script>
+    <script src = "src/graphics/renderer.js"></script>
+    <script src = "src/graphics/scene.js"></script>
+    <script src = "src/graphics/camera.js"></script>
+    <script src = "src/graphics/light.js"></script>
+    <script src = "src/main.js"></script>
+    <script src = "src/input.js"></script>
+  </body>
+</html>
