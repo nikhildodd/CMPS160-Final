@@ -63,12 +63,12 @@ class skyCube extends Geometry {
       vertexA.normal.elements[1] = y1;
       vertexA.normal.elements[2] = z2;
       vertices.push(vertexA);
-      vertexB.texCoord = [1.0, 0.0];
+      vertexB.texCoord = [0, 1.0];
       vertexB.normal.elements[0] = x1;
       vertexB.normal.elements[1] = y2;
       vertexB.normal.elements[2] = z2;
       vertices.push(vertexB);
-      vertexC.texCoord = [0.0, 1.0];
+      vertexC.texCoord = [1.0, 0];
       vertexC.normal.elements[0] = x2;
       vertexC.normal.elements[1] = y1;
       vertexC.normal.elements[2] = z2;
@@ -88,13 +88,13 @@ class skyCube extends Geometry {
       vertexE.normal.elements[2] = z1;
       vertices.push(vertexE);
       
-      vertexF.texCoord = [1.0, 0.0];
+      vertexF.texCoord = [0, 1.0];
       vertexF.normal.elements[0] = x2;
       vertexF.normal.elements[1] = y1;
       vertexF.normal.elements[2] = z1;
       vertices.push(vertexF);
 
-      vertexG.texCoord = [0.0, 1.0];
+      vertexG.texCoord = [1.0, 0.0];
       vertexG.normal.elements[0] = x1;
       vertexG.normal.elements[1] = y2;
       vertexG.normal.elements[2] = z1;
@@ -142,17 +142,17 @@ class skyCube extends Geometry {
       var vertexDDD = new Vertex(x2, y2, z2,color);
       var vertexHHH = new Vertex(x2, y2, x1,color);
 
-      vertexBBB.texCoord = [0.0, 0.0];
+      vertexBBB.texCoord = [0.0, 0];
       vertexBBB.normal.elements[0] = x1;
       vertexBBB.normal.elements[1] = y2;
       vertexBBB.normal.elements[2] = z2;
       vertices.push(vertexBBB);
-      vertexGGG.texCoord = [1.0 , 0.0 ];
+      vertexGGG.texCoord = [0 , 1 ];
       vertexGGG.normal.elements[0] = x1;
       vertexGGG.normal.elements[1] = y2;
       vertexGGG.normal.elements[2] = z1;
       vertices.push(vertexGGG);
-      vertexDDD.texCoord = [0.0, 1.0];
+      vertexDDD.texCoord = [1.0, 0];
       vertexDDD.normal.elements[0] = x2;
       vertexDDD.normal.elements[1] = y2;
       vertexDDD.normal.elements[2] = z2;
@@ -175,12 +175,12 @@ class skyCube extends Geometry {
       vertexCCCC.normal.elements[1] = y1;
       vertexCCCC.normal.elements[2] = z2;
       vertices.push(vertexCCCC);
-      vertexDDDD.texCoord = [1.0, 0.0];
+      vertexDDDD.texCoord = [0, 1.0];
       vertexDDDD.normal.elements[0] = x2;
       vertexDDDD.normal.elements[1] = y2;
       vertexDDDD.normal.elements[2] = z2;
       vertices.push(vertexDDDD);
-      vertexFFFF.texCoord = [0.0, 1.0];
+      vertexFFFF.texCoord = [1.0, 0];
       vertexFFFF.normal.elements[0] = x2;
       vertexFFFF.normal.elements[1] = y1;
       vertexFFFF.normal.elements[2] = z1;
@@ -205,12 +205,12 @@ class skyCube extends Geometry {
       vertexAAAAA.normal.elements[1] = y1;
       vertexAAAAA.normal.elements[2] = z2;
       vertices.push(vertexAAAAA);
-      vertexBBBBB.texCoord = [1.0,0.0];
+      vertexBBBBB.texCoord = [0,1.0];
       vertexBBBBB.normal.elements[0] = x1;
       vertexBBBBB.normal.elements[1] = y2;
       vertexBBBBB.normal.elements[2] = z2;
       vertices.push(vertexBBBBB);
-      vertexEEEEE.texCoord = [0.0,1.0];
+      vertexEEEEE.texCoord = [1.0,0];
       vertexEEEEE.normal.elements[0] = x1;
       vertexEEEEE.normal.elements[1] = y1;
       vertexEEEEE.normal.elements[2] = z1;

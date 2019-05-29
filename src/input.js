@@ -72,8 +72,8 @@ class InputHandler {
         var movementY = ev.movementY;
         console.log("movementY", movementY);
 
-        this.camera.pan(-movementY/12);
-        this.camera.tilt(movementX/12);
+        this.camera.pan(-movementY/1.5);
+        this.camera.tilt(movementX/1.5);
       
         
     }

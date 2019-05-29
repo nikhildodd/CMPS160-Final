@@ -24,6 +24,14 @@ class Walls extends Geometry {
       this.faces = {0: this.vertices};
 
 
+      this.translateToOrigin = new Matrix4();
+      this.translateToOrigin.setTranslate(x,y,0);
+
+      this.translateToPosition = new Matrix4();
+      this.translateToPosition.setTranslate(-x,-y,0);
+      this.rotationMatrix = new Matrix4();
+      this.rotationMatrix.setRotate(1,1,1,0);
+
       // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
       this.interleaveVertices();
   }
@@ -236,5 +244,7 @@ class Walls extends Geometry {
 
         return vertices;
   }
-
+  render(){
+     
+  }
 }

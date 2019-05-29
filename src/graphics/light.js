@@ -4,7 +4,7 @@ class Light {
 
         // light colors
        this.ambient = [0.3,0.2,0.2];
-        this.diffuse = [Math.random(),Math.random(),Math.random()];
+        this.diffuse = [1,0,0.1];
 
         this.specular = [1, 1, 0];
 
