@@ -44,20 +44,8 @@ class Camera {
         }
         this.updateView();
     }
-    zoomCam(val){
-      this.zoom += dir;
-      console.log(this.zoom);
-      if(viewBool == true){
-          this.projectionMatrix.setPerspective(this.zoom, 1, 0.2, 100);
-          viewBool = false;
-      }else{
-          this.projectionMatrix.setOrtho(-this.orthoZoom + dir, this.orthoZoom - dir, -this.orthoZoom + dir, this.orthoZoom - dir, 0.2, 100);
-          viewBool = true;
-      }
-          this.updateView();
-        //this.projectionMatrix.setOrtho(-1,1,-1,1, 0.2, 10+val);
 
-    }
+
 //Truck moves a camera’s location laterally (left or right)
 //while the camera’s direction of view is unchanged. You can truck left or truck right.
 //This is a translation along a camera’s u axis.
@@ -136,6 +124,28 @@ class Camera {
         this.updateView();
     }
 
+    collisionDetection(){
+      //use array from main and based off the arr[i][j], cannot progress forward, backward left or right
+    }
+    jumpCommand(){
+      //space bar goes up vertically (v axis)
+      // Calculate the n camera axis
+      var v = this.eye.sub(this.center); //subtract
+      v = v.normalize()
+
+      // Calculate the u camera axis
+      var u = this.up.cross(n); //cross product
+      u = u.normalize();
+
+      // Scale the u axis to the desired distance to move
+      u = u.mul(dir * this.speed);
+
+      // Add the direction vector to both the eye and center positions
+      this.eye = this.eye.add(u);
+      this.center = this.center.add(u);
+
+      this.updateView();
+    }
 
     updateView() {
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],

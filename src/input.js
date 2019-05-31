@@ -1,6 +1,7 @@
 var _inputHandler = null;
       var perspectiveMode = true;
       var orthoMode = false;
+      var viewBool = false;
 /**
  * Specifies a Input Handler. Used to parse input events from a HTML page.
  *
@@ -87,16 +88,16 @@ class InputHandler {
         var keyName = event.key;
         console.log("key down", keyName);
 
-        if(keyName == "a") {
+          if(keyName == "a") {
             this.camera.truck(-1);
-        }
-        else if(keyName == "d") {
+          }
+          else if(keyName == "d") {
             this.camera.truck(1);
-        }else if(keyName == "w"){
+          }else if(keyName == "w"){
             this.camera.dolly(-1);
-        }else if(keyName == "s"){
+          }else if(keyName == "s"){
             this.camera.dolly(1);
-        }else if(keyName == "z"){
+          }else if(keyName == "z"){
             if(perspectiveMode){
               perspectiveMode = false;
               orthoMode = true;
@@ -107,9 +108,11 @@ class InputHandler {
               this.camera.changeMode(perspectiveMode);
 
             }
-
-        }
+          }else if(keyName == "up"){
+              this.camera.jumpCommand();
+          }
     }
+    /*
     scrollZoom(ev){
       var keyName = event.deltaY;
         console.log("mouse scrolling down", keyName);
@@ -119,7 +122,7 @@ class InputHandler {
           this.camera.zoomCam(keyName);
         }
     }
-
+*/
         /**
      * Function called to read a selected file.
      */

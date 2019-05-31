@@ -98,7 +98,7 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
   newShader.addUniform("u_DiffuseColor", "vec3", new Vector3().elements);
   newShader.addUniform("u_SpecularColor", "vec3", new Vector3().elements);
  //  load sky
-  inputHandler.readTexture("objs/eyes.jpg", function(image) {
+  inputHandler.readTexture("objs/space.jpg", function(image) {
      var sky = new skyCube(shader,0,0,0,64,image,[1,0,0,1]);
      scene.addGeometry(sky);
   })
@@ -110,11 +110,11 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
 
 // load walls
 
-    inputHandler.readTexture("objs/eyes.jpg", function(image) {
+    inputHandler.readTexture("objs/block.jpg", function(image) {
     for(var i = 0; i < map.length; i++){
       for(var j = 0; j < map[i].length; j++){
           if((map[i][j] != 0)) {
-            if((map[i][j]!=2.01)){
+            if((map[i][j] != 2)){
             var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]);
             scene.addGeometry(wallCube);
           }
@@ -137,10 +137,11 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
   renderer = new Renderer(gl, scene, camera);
   renderer.start();
 }
-
+/*
 function scrollZoom(ev){
   console.log("main scrollZoom method");
     var keyName = event.deltaY;
     console.log("main deltaY value", keyName);
     _inputHandler.scrollZoom(ev);
 }
+*/
