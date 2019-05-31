@@ -32,23 +32,24 @@ class Camera {
     changeMode(whichMode){
         if(whichMode == true){ //perspective mode
             huh = 0;
-                        this.projectionMatrix.setPerspective(70,1.0,0.2,100);
+            this.projectionMatrix.setPerspective(70,1.0,0.2,100);
 
             console.log("perspective mode" + huh);
 
         }else{
-            huh = 1;    //ortho mode 
+            huh = 1;    //ortho mode
             this.projectionMatrix.setOrtho(-1,1,-1,1, 0.2, 10);
-  
-            console.log("orthographic mode" + huh); 
+
+            console.log("orthographic mode" + huh);
         }
+        this.updateView();
     }
     zoom(val){
         this.projectionMatrix.setOrtho(-1,1,-1,1, 0.2, 10+val);
-       
+
     }
-//Truck moves a camera’s location laterally (left or right) 
-//while the camera’s direction of view is unchanged. You can truck left or truck right. 
+//Truck moves a camera’s location laterally (left or right)
+//while the camera’s direction of view is unchanged. You can truck left or truck right.
 //This is a translation along a camera’s u axis.
     truck(dir) {
         // Calculate the n camera axis
@@ -57,7 +58,7 @@ class Camera {
 
         // Calculate the u camera axis
         var u = this.up.cross(n); //cross product
-        u = u.normalize();      
+        u = u.normalize();
 
         // Scale the u axis to the desired distance to move
         u = u.mul(dir * this.speed);
@@ -68,7 +69,7 @@ class Camera {
 
         this.updateView();
     }
-//Pan rotates the camera’s view horizontally about the camera’s eye location. 
+//Pan rotates the camera’s view horizontally about the camera’s eye location.
 //You can pan left or pan right. This rotates about a camera’s v axis.
     pan(dir) {
         // Calculate the n camera axis
@@ -76,8 +77,8 @@ class Camera {
         n = n.normalize()
 
         // Calculate the v camera axis
-        var v = this.up; 
-        v = v.normalize();      
+        var v = this.up;
+        v = v.normalize();
 
         // Scale the v axis to the desired distance to move
         v = v.mul(dir * (this.speed));
@@ -98,7 +99,7 @@ class Camera {
 
         // Calculate the u camera axis
         var u = this.up.cross(n); //cross product
-        u = u.normalize();           
+        u = u.normalize();
 
         // Scale the u axis to the desired distance to move
         u = u.mul(dir * (this.speed));
@@ -108,7 +109,7 @@ class Camera {
 
         this.updateView();
     }
-//Dolly moves a camera closer to, or further from, 
+//Dolly moves a camera closer to, or further from,
 //the location it is looking at. You can dolly in and dolly out. This is a translation along a camera’s n axis.
     dolly(dir){
         // Calculate the n camera axis
