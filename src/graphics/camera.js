@@ -44,8 +44,18 @@ class Camera {
         }
         this.updateView();
     }
-    zoom(val){
-        this.projectionMatrix.setOrtho(-1,1,-1,1, 0.2, 10+val);
+    zoomCam(val){
+      this.zoom += dir;
+      console.log(this.zoom);
+      if(viewBool == true){
+          this.projectionMatrix.setPerspective(this.zoom, 1, 0.2, 100);
+          viewBool = false;
+      }else{
+          this.projectionMatrix.setOrtho(-this.orthoZoom + dir, this.orthoZoom - dir, -this.orthoZoom + dir, this.orthoZoom - dir, 0.2, 100);
+          viewBool = true;
+      }
+          this.updateView();
+        //this.projectionMatrix.setOrtho(-1,1,-1,1, 0.2, 10+val);
 
     }
 //Truck moves a camera’s location laterally (left or right)

@@ -22,7 +22,7 @@ class InputHandler {
       this.deltaX = 0;
       this.deltaY = 0;
       // Mouse Events
-      this.canvas.onmousedown = function(ev) { 
+      this.canvas.onmousedown = function(ev) {
         _inputHandler.mouseClick(ev);
         mouseDown = true;
       }
@@ -30,15 +30,15 @@ class InputHandler {
         mouseDown = false;
       }
 
-      this.canvas.onmousemove = function(ev) { 
+      this.canvas.onmousemove = function(ev) {
         if(mouseDown){
           _inputHandler.mouseMove(ev);
-          } 
+          }
 
       }
       this.canvas.onwheel = function(ev) {
         console.log("mouse scrolled");
-       _inputHandler.mouseWheel(ev); 
+       _inputHandler.mouseWheel(ev);
      };
 
       // Keyboard Events
@@ -74,8 +74,8 @@ class InputHandler {
 
         this.camera.pan(-movementY/1.5);
         this.camera.tilt(movementX/1.5);
-      
-        
+
+
     }
 
     keyUp(ev) {
@@ -108,6 +108,15 @@ class InputHandler {
 
             }
 
+        }
+    }
+    scrollZoom(ev){
+      var keyName = event.deltaY;
+        console.log("mouse scrolling down", keyName);
+        if(keyName != 0){
+          //_inputHandler.camera.zoom(keyName);
+          //this.camera.dolly(keyName);
+          this.camera.zoomCam(keyName);
         }
     }
 

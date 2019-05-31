@@ -1,7 +1,7 @@
 var shader = null;
 
 
-function main() {  
+function main() {
 var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
@@ -34,7 +34,7 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
                [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]];
-  
+
   // Retrieve the canvas from the HTML document
   canvas = document.getElementById("webgl");
 
@@ -109,13 +109,13 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
 })
 
 // load walls
-            
+
     inputHandler.readTexture("objs/eyes.jpg", function(image) {
     for(var i = 0; i < map.length; i++){
       for(var j = 0; j < map[i].length; j++){
-          if((map[i][j] != 0)) { 
+          if((map[i][j] != 0)) {
             if((map[i][j]!=2.01)){
-            var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]); 
+            var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]);
             scene.addGeometry(wallCube);
           }
           }
@@ -123,10 +123,10 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
       }
     })
 
-  
+
 
   inputHandler.readTexture("objs/door.jpg", function(image) {
-      var doorCube = new Walls(shader, -16 + 16, -0.5, -16 + 4, 0.5, map[16][4], image,[1,0,0,1]); 
+      var doorCube = new Walls(shader, -16 + 16, -0.5, -16 + 4, 0.5, map[16][4], image,[1,0,0,1]);
       scene.addGeometry(doorCube);
   })
   var sphere1 = new Sphere(newShader, 20,0,20,0); // (shader,segment,x,y,z);
@@ -138,3 +138,9 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
   renderer.start();
 }
 
+function scrollZoom(ev){
+  console.log("main scrollZoom method");
+    var keyName = event.deltaY;
+    console.log("main deltaY value", keyName);
+    _inputHandler.scrollZoom(ev);
+}
