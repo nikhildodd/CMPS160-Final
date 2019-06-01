@@ -281,9 +281,9 @@ class Cube extends Geometry {
   }
 
   render(){
-    this.modelMatrix = this.modelMatrix.multiply(this.moveToOrigin);
+    this.modelMatrix = this.modelMatrix.multiply(this.translateToOrigin);
     this.modelMatrix = this.modelMatrix.multiply(this.rotationMatrix);
-    this.modelMatrix = this.modelMatrix.multiply(this.moveToPos);
+    this.modelMatrix = this.modelMatrix.multiply(this.translateToPosition);
     //this.modelMatrix = this.modelMatrix.multiply(this.scalingMatrix);
     this.shader.setUniform("u_ModelMatrix", this.modelMatrix.elements);
   }

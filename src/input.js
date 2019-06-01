@@ -97,6 +97,8 @@ class InputHandler {
           else if(keyName == "d") {
             this.camera.truck(1);
           }else if(keyName == "w"){
+            countUps++;
+            console.log(countUps);
             this.camera.dolly(-1);
           }else if(keyName == "s"){
             this.camera.dolly(1);
