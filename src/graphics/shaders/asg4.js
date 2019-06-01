@@ -16,7 +16,7 @@ var ASG4_VSHADER =
 
   void main() {
     v_Color = a_Color;
-    v_TexCoord = a_TexCoord;                                                                               
+    v_TexCoord = a_TexCoord;
 
     v_Normal = normalize(vec3(u_NormalMatrix * a_Normal));
     gl_Position = u_ProjectionMatrix * u_ViewMatrix * a_Position;
@@ -76,6 +76,7 @@ var ASG5_VSHADER =
 
   void main() {
     v_Color = a_Color;
+    v_TexCoord = a_TexCoord;
     v_Normal = normalize(vec3(u_NormalMatrix * a_Normal));
     gl_Position = u_ModelMatrix * u_ProjectionMatrix * u_ViewMatrix * a_Position;
   }`;
@@ -107,4 +108,3 @@ var ASG5_FSHADER =
 
     gl_FragColor = vec4(u_AmbientColor + diffuse + specular, 1.0);
   }`;
-
