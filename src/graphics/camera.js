@@ -127,24 +127,66 @@ class Camera {
     collisionDetection(){
       //use array from main and based off the arr[i][j], cannot progress forward, backward left or right
     }
-    jumpCommand(){
+
+    crazyAngle(val){
+      console.log("crazyAngle function");
+        if(crazyView == false){
+            console.log("crazyAngle");
+            console.log(crazyView);
+            this.eye = new Vector3([0, 15, -15.5]);
+            crazyView = true;
+
+        }else{
+            console.log("normalAngle");
+            console.log(crazyView);
+            this.eye = new Vector3([0, 0, -15.5]);
+            crazyView = false;
+        }
+        this.updateView();
+    }
+
+
+    jumpUpCommand(){
       //space bar goes up vertically (v axis)
       // Calculate the n camera axis
+      var dir = this.speed;
       var v = this.eye.sub(this.center); //subtract
       v = v.normalize()
 
       // Calculate the u camera axis
-      var u = this.up.cross(n); //cross product
+      var u = this.up; //cross product
       u = u.normalize();
 
       // Scale the u axis to the desired distance to move
-      u = u.mul(dir * this.speed);
+      v = v.mul(dir * this.speed);
 
       // Add the direction vector to both the eye and center positions
       this.eye = this.eye.add(u);
       this.center = this.center.add(u);
 
       this.updateView();
+
+    }
+    jumpDownCommand(){
+      //space bar goes up vertically (v axis)
+      // Calculate the n camera axis
+      var dir = this.speed;
+      var v = this.eye.sub(this.center); //subtract
+      v = v.normalize()
+
+      // Calculate the u camera axis
+      var u = -this.up; //cross product
+      u = u.normalize();
+
+      // Scale the u axis to the desired distance to move
+      v = v.mul(dir * this.speed);
+
+      // Add the direction vector to both the eye and center positions
+      this.eye = this.eye.add(u);
+      this.center = this.center.add(u);
+
+      this.updateView();
+
     }
 
     updateView() {

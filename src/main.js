@@ -1,8 +1,9 @@
 var shader = null;
-
+var scene = null;
+var map = null;
 
 function main() {
-var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
+     map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
                [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
@@ -114,7 +115,7 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
   var light = new Light(5, 35 ,5);
 
   // Initialize the scene
-  var scene = new Scene();
+  scene = new Scene();
   scene.setLight(light);
   var camera = new Camera();
 
@@ -181,8 +182,8 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
       for(var j = 0; j < map[i].length; j++){
           if((map[i][j] != 0)) {
             if((map[i][j]!=2.01)){
-            var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]);
-            scene.addGeometry(wallCube);
+              var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]);
+              scene.addGeometry(wallCube);
             }
           }
         }
@@ -196,9 +197,9 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
         for(var j = 0; j < lava[i].length; j++){
           if((lava[i][j] != 0)) {
             if((lava[i][j]!=2.01)){
-            //var puddle = new Walls(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
-            var puddle = new Cube(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
-            scene.addGeometry(puddle);
+              //var puddle = new Walls(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
+              var puddle = new Cube(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
+              scene.addGeometry(puddle);
             }
           }
         }
@@ -212,9 +213,6 @@ var map =     [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
       scene.addGeometry(doorCube);
   })
 
-  if(countUps == 10){
-    //clear texture
-  }
   var sphere1 = new Sphere(newShader, 20,0,20,0); // (shader,segment,x,y,z);
   scene.addGeometry(sphere1);
 

@@ -4,6 +4,7 @@ var orthoMode = false;
 var viewBool = false;
 var mouseClicked = false;
 var countUps = 0; //When countUps = certain number make door texture disappear
+var crazyView = false;
 /**
  * Specifies a Input Handler. Used to parse input events from a HTML page.
  *
@@ -95,28 +96,36 @@ class InputHandler {
             this.camera.truck(-1);
           }
           else if(keyName == "d") {
-            this.camera.truck(1);
-          }else if(keyName == "w"){
-            countUps++;
-            console.log(countUps);
-            this.camera.dolly(-1);
-          }else if(keyName == "s"){
-            this.camera.dolly(1);
-          }else if(keyName == "z"){
-            if(perspectiveMode){
-              perspectiveMode = false;
-              orthoMode = true;
-              this.camera.changeMode(perspectiveMode);
-            }else if(orthoMode){
-              orthoMode = false;
-              perspectiveMode = true;
-              this.camera.changeMode(perspectiveMode);
-
-            }
-          }else if(keyName == "up"){
-              this.camera.jumpCommand();
+              this.camera.truck(1);
+          }
+          else if(keyName == "w"){
+              countUps++;
+              console.log(countUps);
+              this.camera.dolly(-1);
+          }
+          else if(keyName == "s"){
+              this.camera.dolly(1);
+          }
+          else if(keyName == "z"){
+              if(perspectiveMode){
+                  perspectiveMode = false;
+                  orthoMode = true;
+                  this.camera.changeMode(perspectiveMode);
+              }
+              else if(orthoMode){
+                  orthoMode = false;
+                  perspectiveMode = true;
+                  this.camera.changeMode(perspectiveMode);
+              }
+          }
+          else if(keyName == "p"){
+              this.camera.crazyAngle();
+          }
+          else if(keyName == "j"){
+              this.camera.jumpUpCommand();
           }
     }
+
     /*
     scrollZoom(ev){
       var keyName = event.deltaY;
