@@ -1,7 +1,9 @@
 var _inputHandler = null;
-      var perspectiveMode = true;
-      var orthoMode = false;
-      var viewBool = false;
+var perspectiveMode = true;
+var orthoMode = false;
+var viewBool = false;
+var mouseClicked = false;
+var countUps = 0; //When countUps = certain number make door texture disappear
 /**
  * Specifies a Input Handler. Used to parse input events from a HTML page.
  *
@@ -61,6 +63,7 @@ class InputHandler {
      */
     mouseClick(ev) {
         // Print x,y coordinates.
+
         console.log(ev.clientX, ev.clientY);
 
 

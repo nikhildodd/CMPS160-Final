@@ -3,7 +3,7 @@
  *
  *
  */
-class Walls extends Geometry {
+class Cube extends Geometry {
   /**
    * Constructor for Square.
    *
@@ -23,12 +23,12 @@ class Walls extends Geometry {
       this.vertices = this.generateCubeVertices(x,y,z,this.size,this.height,color);
       this.faces = {0: this.vertices};
 
-
       this.translateToOrigin = new Matrix4();
       this.translateToOrigin.setTranslate(x,y,0);
 
       this.translateToPosition = new Matrix4();
       this.translateToPosition.setTranslate(-x,-y,0);
+
       this.rotationMatrix = new Matrix4();
       this.rotationMatrix.setRotate(1,1,1,0);
 
@@ -143,6 +143,40 @@ class Walls extends Geometry {
         vertex18.normal.elements[1] = y2;
         vertex18.normal.elements[2] = z2;
 
+        //Bottom
+        var vertex19 = new Vertex(x1, y1, z1,color);
+        var vertex20 = new Vertex(x1, y2, z2,color);
+        var vertex21 = new Vertex(x1, y2, z1,color);
+        var vertex22 = new Vertex(x1, y1, z1,color);
+        var vertex23 = new Vertex(x1, y1, z2,color);
+        var vertex24 = new Vertex(x1, y2, z2,color);
+
+        vertex19.texCoord = [0.0, 0.0];
+        vertex20.texCoord = [1.0, 1.0 + (this.height - 1)];
+        vertex21.texCoord = [0.0, 1.0 + (this.height - 1)];
+        vertex22.texCoord = [0.0, 0.0];
+        vertex23.texCoord = [1.0, 0.0];
+        vertex24.texCoord = [1.0, 1.0 + (this.height - 1)];
+
+        vertex19.normal.elements[0] = x1;
+        vertex19.normal.elements[1] = y1;
+        vertex19.normal.elements[2] = z1;
+        vertex20.normal.elements[0] = x1;
+        vertex20.normal.elements[1] = y2;
+        vertex20.normal.elements[2] = z2;
+        vertex21.normal.elements[0] = x1;
+        vertex21.normal.elements[1] = y2;
+        vertex21.normal.elements[2] = z1;
+        vertex22.normal.elements[0] = x1;
+        vertex22.normal.elements[1] = y1;
+        vertex22.normal.elements[2] = z1;
+        vertex23.normal.elements[0] = x1;
+        vertex23.normal.elements[1] = y1;
+        vertex23.normal.elements[2] = z2;
+        vertex24.normal.elements[0] = x1;
+        vertex24.normal.elements[1] = y2;
+        vertex24.normal.elements[2] = z2;
+
 
         //Left
         var vertex25 = new Vertex(x1, y1, z1,color);
@@ -229,6 +263,7 @@ class Walls extends Geometry {
         vertices.push(vertex17);
         vertices.push(vertex18);
 
+
         vertices.push(vertex25);
         vertices.push(vertex26);
         vertices.push(vertex27);
@@ -246,6 +281,10 @@ class Walls extends Geometry {
   }
 
   render(){
-
+    this.modelMatrix = this.modelMatrix.multiply(this.moveToOrigin);
+    this.modelMatrix = this.modelMatrix.multiply(this.rotationMatrix);
+    this.modelMatrix = this.modelMatrix.multiply(this.moveToPos);
+    //this.modelMatrix = this.modelMatrix.multiply(this.scalingMatrix);
+    this.shader.setUniform("u_ModelMatrix", this.modelMatrix.elements);
   }
 }
