@@ -124,6 +124,9 @@ class InputHandler {
           else if(keyName == "j"){
               this.camera.jumpUpCommand();
           }
+          else if (keyName == "n"){
+              this.camera.jumpDownCommand();
+          }
     }
 
     /*

@@ -175,15 +175,15 @@ class Camera {
       v = v.normalize()
 
       // Calculate the u camera axis
-      var u = -this.up; //cross product
+      var u = this.up; //cross product
       u = u.normalize();
 
       // Scale the u axis to the desired distance to move
       v = v.mul(dir * this.speed);
 
       // Add the direction vector to both the eye and center positions
-      this.eye = this.eye.add(u);
-      this.center = this.center.add(u);
+      this.eye = this.eye.sub(u);
+      this.center = this.center.sub(u);
 
       this.updateView();
 
