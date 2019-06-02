@@ -21,7 +21,7 @@ class Renderer {
         this.camera = camera;
 
         this.textures = {};
-        
+
         this.lightRotationMatrix = new Matrix4();
         this.lightRotationMatrix.setRotate(0.1, -2,-2, 2);
 
@@ -90,9 +90,9 @@ class Renderer {
                     this.gl.bindTexture(this.gl.TEXTURE_2D, this.textures[geometry.image.src]);
                 }
             }
-            
+
             this.drawHUD(this.ctx);
-            if(moveCount == 20){
+            if(moveCount == 200){
               this.drawGameOver(this.end);
             }
 
@@ -208,13 +208,13 @@ class Renderer {
   ctx.closePath();
 
   ctx.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
-  ctx.stroke();  
+  ctx.stroke();
       ctx.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
       ctx.stroke();                           // Draw Triangle with white lines
       // Draw white letters
       ctx.font = '25px "Chalkboard"';
       ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
-      ctx.fillText('MAZE', 28, 30); 
+      ctx.fillText('MAZE', 28, 30);
       ctx.font = '14px "Chalkboard"';
       ctx.fillText('moves:   ' + moveCount,28,50);
 
@@ -227,13 +227,13 @@ class Renderer {
   end.closePath();
 
   end.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
-  end.stroke();  
+  end.stroke();
       end.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
       end.stroke();                           // Draw Triangle with white lines
       // Draw white letters
       end.font = '50px "Chalkboard"';
       end.fillStyle = 'rgba(255, 0, 0, 1)'; // Set white to the color of letters
-      end.fillText('GAME OVER', 65, 200); 
+      end.fillText('GAME OVER', 65, 200);
       end.font = '25px "Chalkboard"';
       end.fillText('refresh to restart', 115, 250);
       scene.clearGeometries();
