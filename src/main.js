@@ -274,9 +274,5 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
   renderer = new Renderer(gl,ctx,end, scene, camera);
   renderer.start();
 
-  if(reset==true){
-    console.log("sdsd");
-  document.location.reload()
-      reset=false;
-  }
+
 }
