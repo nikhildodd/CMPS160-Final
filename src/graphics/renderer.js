@@ -92,7 +92,7 @@ class Renderer {
             }
             
             this.drawHUD(this.ctx);
-            if(moveCount == 5){
+            if(moveCount == 20){
               this.drawGameOver(this.end);
             }
 

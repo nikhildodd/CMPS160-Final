@@ -155,7 +155,7 @@ function main() {
   scene.setLight(light);
   var camera = new Camera();
 
-  var inputHandler = new InputHandler(canvas, scene, camera);
+  var inputHandler = new InputHandler(canvas,hud,gameover, scene, camera);
 
   // Initialize shader
   shader = new Shader(gl, ASG4_VSHADER, ASG4_FSHADER);

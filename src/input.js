@@ -17,8 +17,10 @@ class InputHandler {
      * Initializes the event handeling functions within the program.
      */
 
-    constructor(canvas, scene, camera) {
+    constructor(canvas,hud,gameover, scene, camera) {
       this.canvas = canvas;
+      this.hud = hud;
+      this.gameover =gameover;
       this.scene  = scene;
       this.camera = camera;
       this.zoom = 1;
@@ -42,6 +44,43 @@ class InputHandler {
 
       }
       this.canvas.onwheel = function(ev) {
+        console.log("mouse scrolled");
+       _inputHandler.mouseWheel(ev);
+     };
+
+      this.hud.onmousedown = function(ev) {
+        _inputHandler.mouseClick(ev);
+        mouseDown = true;
+      }
+      this.hud.onmouseup = function(ev){
+        mouseDown = false;
+      }
+
+      this.hud.onmousemove = function(ev) {
+        if(mouseDown){
+          _inputHandler.mouseMove(ev);
+          }
+
+      }
+      this.hud.onwheel = function(ev) {
+        console.log("mouse scrolled");
+       _inputHandler.mouseWheel(ev);
+     };
+      this.gameover.onmousedown = function(ev) {
+        _inputHandler.mouseClick(ev);
+        mouseDown = true;
+      }
+      this.gameover.onmouseup = function(ev){
+        mouseDown = false;
+      }
+
+      this.gameover.onmousemove = function(ev) {
+        if(mouseDown){
+          _inputHandler.mouseMove(ev);
+          }
+
+      }
+      this.gameover.onwheel = function(ev) {
         console.log("mouse scrolled");
        _inputHandler.mouseWheel(ev);
      };
