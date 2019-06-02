@@ -6,9 +6,13 @@
 <body style = "background-color:gold;">
 
   <body onload = "main()">
-    <canvas id="webgl"  width="400" height="400">
+    <canvas id="webgl"  width="400" height="400" style="position: absolute; z-index: 0">
       Please use a browser that supports "canvas"
     </canvas>
+
+    <canvas id="hud" width="40" height="40" style="position: absolute; z-index: 1">
+    </canvas>
+
     <br>
     <div style = "color:white;">CONTROLS:</div>
 <br>
@@ -18,6 +22,8 @@
 <LI style="color:white;">A moves camera to the left</LI>
 <LI style="color:white;">S moves camera backwards</LI>
 <LI style="color:white;">D moves camera to the right.</LI>
+<LI style="color:white;">P is for cheaters. Use it to see the maze.</LI>
+<LI style="color:white;">J is another cheater button. Use it for infinite jumps!</LI>
 <br>
 <LI style="color:white;">Camera can be rotated with the mouse.</LI>
 <br>
