@@ -138,11 +138,12 @@ function main() {
   // Retrieve the canvas from the HTML document
   canvas = document.getElementById("webgl");
   var hud = document.getElementById("hud");
-
+  var gameover = document.getElementById("gameover");
   // Retrieve WebGL rendering context
   var gl = getWebGLContext(canvas);
   var ctx = hud.getContext('2d');
-  if (!gl || !ctx) {
+  var end = gameover.getContext('2d');
+  if (!gl || !ctx || !end) {
     console.log("Failed to get WebGL rendering context.");
     return;
   }
@@ -269,8 +270,13 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
   var sphere1 = new Sphere(newShader, 20,0,20,0); // (shader,segment,x,y,z);
   scene.addGeometry(sphere1);
 
-
   // Initialize renderer with scene and camera
-  renderer = new Renderer(gl,ctx, scene, camera);
+  renderer = new Renderer(gl,ctx,end, scene, camera);
   renderer.start();
+
+  if(reset==true){
+    console.log("sdsd");
+  document.location.reload()
+      reset=false;
+  }
 }
