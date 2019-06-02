@@ -13,8 +13,9 @@ class Renderer {
     * @constructor
     * @returns {Renderer} Renderer object created
     */
-    constructor(gl, scene, camera) {
+    constructor(gl, ctx, scene, camera) {
         this.gl = gl;
+        this.ctx = ctx;
         this.scene = scene;
         this.camera = camera;
 
@@ -89,7 +90,7 @@ class Renderer {
                 }
             }
             
-
+            this.drawHUD(this.ctx);
 
             // Callback function in the case user wants to change the
             // geometry before the draw call
@@ -195,7 +196,25 @@ class Renderer {
               break;
         }
     }
+    drawHUD(ctx) {
+      ctx.clearRect(0, 0, 130, 70); // Clear <hud>
+  // Draw triangle with white lines
+  ctx.beginPath();                      // Start drawing
+  ctx.moveTo(5, 5); ctx.lineTo(5, 60); ctx.lineTo(120,60); ctx.lineTo(120, 5);
+  ctx.closePath();
 
+  ctx.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+  ctx.stroke();  
+      ctx.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      ctx.stroke();                           // Draw Triangle with white lines
+      // Draw white letters
+      ctx.font = '25px "Chalkboard"';
+      ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
+      ctx.fillText('MAZE', 20, 30); 
+      ctx.font = '14px "Chalkboard"';
+      ctx.fillText('doors cleared: 0',10,50);
+
+  }
     loadTexture(texture, image) {
         // Flip the image's y axis
         this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 1);

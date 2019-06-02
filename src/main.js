@@ -266,6 +266,6 @@ function main() {
 
 
   // Initialize renderer with scene and camera
-  renderer = new Renderer(gl, scene, camera);
+  renderer = new Renderer(gl,ctx, scene, camera);
   renderer.start();
 }
