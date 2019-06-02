@@ -210,7 +210,7 @@ class Renderer {
       // Draw white letters
       ctx.font = '25px "Chalkboard"';
       ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
-      ctx.fillText('MAZE', 20, 30); 
+      ctx.fillText('MAZE', 28, 30); 
       ctx.font = '14px "Chalkboard"';
       ctx.fillText('doors cleared: 0',10,50);
 
