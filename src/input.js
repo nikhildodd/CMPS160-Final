@@ -98,16 +98,19 @@ class InputHandler {
             this.camera.truck(-1);
           }
           else if(keyName == "d") {
+
               moveCount++;
               this.camera.truck(1);
           }
           else if(keyName == "w"){
+
               countUps++;
               moveCount++;
               console.log(countUps);
               this.camera.dolly(-1);
           }
           else if(keyName == "s"){
+
             moveCount++;
               this.camera.dolly(1);
           }

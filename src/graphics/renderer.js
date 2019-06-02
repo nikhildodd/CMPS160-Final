@@ -13,9 +13,10 @@ class Renderer {
     * @constructor
     * @returns {Renderer} Renderer object created
     */
-    constructor(gl, ctx, scene, camera) {
+    constructor(gl, ctx,end, scene, camera) {
         this.gl = gl;
         this.ctx = ctx;
+        this.end = end;
         this.scene = scene;
         this.camera = camera;
 
@@ -91,6 +92,9 @@ class Renderer {
             }
             
             this.drawHUD(this.ctx);
+            if(moveCount == 5){
+              this.drawGameOver(this.end);
+            }
 
             // Callback function in the case user wants to change the
             // geometry before the draw call
@@ -212,7 +216,29 @@ class Renderer {
       ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
       ctx.fillText('MAZE', 28, 30); 
       ctx.font = '14px "Chalkboard"';
-      ctx.fillText('moves:' + moveCount,28,50);
+      ctx.fillText('moves:   ' + moveCount,28,50);
+
+  }
+  drawGameOver(end){
+          end.clearRect(0, 0, 400, 400); // Clear <hud>
+  // Draw triangle with white lines
+  end.beginPath();                      // Start drawing
+  end.moveTo(5, 5); end.lineTo(5, 60); end.lineTo(120,60); end.lineTo(120, 5);
+  end.closePath();
+
+  end.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+  end.stroke();  
+      end.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      end.stroke();                           // Draw Triangle with white lines
+      // Draw white letters
+      end.font = '50px "Chalkboard"';
+      end.fillStyle = 'rgba(255, 0, 0, 1)'; // Set white to the color of letters
+      end.fillText('GAME OVER', 65, 200); 
+      end.font = '25px "Chalkboard"';
+      end.fillText('refresh to restart', 115, 250);
+      scene.clearGeometries();
+
+      gameover=true;
 
   }
     loadTexture(texture, image) {
