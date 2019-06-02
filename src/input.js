@@ -5,6 +5,7 @@ var viewBool = false;
 var mouseClicked = false;
 var countUps = 0; //When countUps = certain number make door texture disappear
 var crazyView = false;
+var moveCount = 0;
 /**
  * Specifies a Input Handler. Used to parse input events from a HTML page.
  *
@@ -93,17 +94,21 @@ class InputHandler {
         console.log("key down", keyName);
 
           if(keyName == "a") {
+            moveCount++;
             this.camera.truck(-1);
           }
           else if(keyName == "d") {
+              moveCount++;
               this.camera.truck(1);
           }
           else if(keyName == "w"){
               countUps++;
+              moveCount++;
               console.log(countUps);
               this.camera.dolly(-1);
           }
           else if(keyName == "s"){
+            moveCount++;
               this.camera.dolly(1);
           }
           else if(keyName == "z"){

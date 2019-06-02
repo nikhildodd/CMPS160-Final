@@ -200,7 +200,7 @@ function main() {
   newShader.addUniform("u_DiffuseColor", "vec3", new Vector3().elements);
   newShader.addUniform("u_SpecularColor", "vec3", new Vector3().elements);
  //  load sky
-  inputHandler.readTexture("objs/space.jpg", function(image) {
+  inputHandler.readTexture("objs/eyes.jpg", function(image) {
      var sky = new skyCube(shader,0,0,0,64,image,[1,0,0,1]);
      scene.addGeometry(sky);
   })
