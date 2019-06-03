@@ -182,16 +182,19 @@ class InputHandler {
         console.log("key down", keyName);
 
           if(keyName == "a") {
+document.getElementById('audio').play();
             if(!GOAL)
             moveCount++;
             this.camera.truck(-1);
           }
           else if(keyName == "d") {
+document.getElementById('audio').play();
             if(!GOAL)
               moveCount++;
               this.camera.truck(1);
           }
           else if(keyName == "w"){
+document.getElementById('audio').play();
             if(!GOAL)
                moveCount++;
               countUps++;
@@ -199,6 +202,7 @@ class InputHandler {
               this.camera.dolly(-1);
           }
           else if(keyName == "s"){
+  document.getElementById('audio').play();
             if(!GOAL)
             moveCount++;
               this.camera.dolly(1);

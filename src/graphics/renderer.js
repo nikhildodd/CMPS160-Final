@@ -241,6 +241,8 @@ class Renderer {
 
   }
   drawGameOver(end){
+  document.getElementById('bgm').pause();
+
           end.clearRect(0, 0, 400, 400); // Clear <hud>
   // Draw triangle with white lines
   end.beginPath();                      // Start drawing
@@ -267,6 +269,8 @@ class Renderer {
 
   }
     drawStartMessage(start){
+document.getElementById('bgm').play();
+
       start.clearRect(0, 0, 400, 400); // Clear <hud>
       start.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
       start.stroke();
@@ -280,6 +284,10 @@ class Renderer {
 
   }
     drawGoalMessage(goal){
+
+  document.getElementById('bgm').pause();
+document.getElementById('endingSong').play();
+
       goal.clearRect(0, 0, 400, 400); // Clear <hud>
       goal.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
       goal.stroke();
