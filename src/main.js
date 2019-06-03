@@ -168,6 +168,18 @@ function main() {
 
   // Initialize shader
   shader = new Shader(gl, ASG4_VSHADER, ASG4_FSHADER);
+  rotationShader = new Shader(gl, rotation_VSHADER, rotation_FSHADER);
+  rotationShader.addAttribute("a_Position");
+  rotationShader.addAttribute("a_Color");
+  rotationShader.addAttribute("a_TexCoord");
+  var idMatrix1 = new Matrix4();
+
+  rotationShader.addUniform("u_ViewMatrix", "mat4", idMatrix1.elements);
+  rotationShader.addUniform("u_ProjectionMatrix", "mat4", idMatrix1.elements);
+  // Add uniforms
+
+  rotationShader.addUniform("u_ModelMatrix", "mat4", idMatrix1.elements);
+  rotationShader.addUniform("u_Sampler", "sampler2D", 0);
 
   // Add attibutes
   shader.addAttribute("a_Position");
@@ -253,17 +265,15 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
       }
     })
 
-//lava puddles
+//water puddles
 
     inputHandler.readTexture("objs/water.jpg", function(image){
       for(var i = 0; i < lava.length; i++){
         for(var j = 0; j < lava[i].length; j++){
           if((lava[i][j] != 0)) {
-            if((lava[i][j]!=2.02)){
               //var puddle = new Walls(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
-              var puddle = new Cube(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
+              var puddle = new Cube(rotationShader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
               scene.addGeometry(puddle);
-            }
           }
         }
       }

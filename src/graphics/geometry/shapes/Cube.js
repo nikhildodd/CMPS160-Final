@@ -24,13 +24,13 @@ class Cube extends Geometry {
       this.faces = {0: this.vertices};
 
       this.translateToOrigin = new Matrix4();
-      this.translateToOrigin.setTranslate(x,y,0);
+      this.translateToOrigin.setTranslate(x,y,z);
 
       this.translateToPosition = new Matrix4();
-      this.translateToPosition.setTranslate(-x,-y,0);
+      this.translateToPosition.setTranslate(-x,-y,-z);
 
       this.rotationMatrix = new Matrix4();
-      this.rotationMatrix.setRotate(1,1,1,1);
+      this.rotationMatrix.setRotate(15,1,1,1);
 
       // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
       this.interleaveVertices();
@@ -284,7 +284,7 @@ class Cube extends Geometry {
     //console.log("Rotation begin.");
     this.modelMatrix = this.modelMatrix.multiply(this.translateToOrigin);
     this.modelMatrix = this.modelMatrix.multiply(this.rotationMatrix);
-    this.modelMatrix = this.modelMatrix.multiply(this.translateToPosition);
+   this.modelMatrix = this.modelMatrix.multiply(this.translateToPosition);
     //this.modelMatrix = this.modelMatrix.multiply(this.scalingMatrix);
     this.shader.setUniform("u_ModelMatrix", this.modelMatrix.elements);
   }
