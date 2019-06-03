@@ -14,10 +14,12 @@ class Renderer {
     * @constructor
     * @returns {Renderer} Renderer object created
     */
-    constructor(gl, ctx,end, scene, camera) {
+    constructor(gl, ctx,end,start,goal,scene, camera) {
         this.gl = gl;
         this.ctx = ctx;
         this.end = end;
+        this.startMSG = start;
+        this.goalMSG = goal;
         this.scene = scene;
         this.camera = camera;
 
@@ -103,6 +105,14 @@ class Renderer {
               this.end.clearRect(0, 0, 400, 400); // Clear <hud>
 
               resetIt = false;
+            }
+            if(moveCount < 13){
+              this.drawStartMessage(this.startMSG);
+            }else{
+              this.startMSG.clearRect(0,0,400,400);
+            }
+            if(GOAL){
+              this.drawGoalMessage(this.goalMSG);
             }
 
             // Callback function in the case user wants to change the
@@ -252,6 +262,36 @@ class Renderer {
       end.fillText('press b to restart', 115, 250);
 
       isGameOver = true;
+
+  }
+    drawStartMessage(start){
+      start.clearRect(0, 0, 400, 400); // Clear <hud>
+      start.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      start.stroke();
+      start.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      start.stroke();                           // Draw Triangle with white lines
+      // Draw white letters
+      start.font = '20px "Chalkboard"';
+      start.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
+      
+      start.fillText('walk through the door to start', 60, 200);
+
+  }
+    drawGoalMessage(goal){
+      goal.clearRect(0, 0, 400, 400); // Clear <hud>
+      goal.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      goal.stroke();
+      goal.strokeStyle = 'rgba(255, 255, 255, 1)'; // Set white to color of lines
+      goal.stroke();                           // Draw Triangle with white lines
+      // Draw white letters
+      goal.font = '33px "Chalkboard"';
+      goal.fillStyle = 'rgba(255, 0, 255, 1)'; // Set white to the color of letters
+      
+      goal.fillText('YOURE WINNRER!', 50, 175);
+      goal.fillText('IN ' + moveCount + ' MOVES', 90, 220);
+      goal.fillText(':-)', 175, 250);
+
+
 
   }
     loadTexture(texture, image) {
