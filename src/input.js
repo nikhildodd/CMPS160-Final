@@ -30,8 +30,18 @@ class InputHandler {
       this.deltaY = 0;
       // Mouse Events
       this.canvas.onmousedown = function(ev) {
+        var x = ev.clientX, y = ev.clientY;
+        var rect = ev.target.getBoundingClientRect();
+        if (rect.left <= x && x < rect.right && rect.top <= y && y < rect.bottom) {
+      // If pressed position is inside <canvas>, check if it is above object
+            var x_in_canvas = x - rect.left, y_in_canvas = rect.bottom - y;
+            var picked = check(gl, n, x_in_canvas, y_in_canvas, currentAngle, u_Clicked, viewProjMatrix, u_MvpMatrix);
+              if (picked){
+                alert('The cube was selected! ');
+              }
         _inputHandler.mouseClick(ev);
         mouseDown = true;
+        }
       }
       this.canvas.onmouseup = function(ev){
         mouseDown = false;

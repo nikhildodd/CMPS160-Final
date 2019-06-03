@@ -216,7 +216,7 @@ class Renderer {
       ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // Set white to the color of letters
       ctx.fillText('MAZE', 28, 30);
       ctx.font = '14px "Chalkboard"';
-      ctx.fillText('moves:   ' + moveCount,28,50);
+      ctx.fillText('moves: ' + moveCount,30,50);
 
   }
   drawGameOver(end){

@@ -1,5 +1,30 @@
+// Vertex shader program (Selector)
+var VSHADER_SOURCE =
+  `attribute vec4 a_Position;
+  attribute vec4 a_Color;
+  uniform mat4 u_MvpMatrix;
+  uniform bool u_Clicked;  // Mouse is pressed
+  varying vec4 v_Color;
+  void main() {
+    gl_Position = u_MvpMatrix * a_Position; +
+    if (u_Clicked) {
+      v_Color = vec4(1.0, 0.0, 0.0, 1.0); +
+    } else { +
+      v_Color = a_Color; +
+    }
+  }`;
+
+  var FSHADER_SOURCE =
+  `precision mediump float;
+  varying vec4 v_Color;
+  void main() {
+    gl_FragColor = v_Color;
+  }`;
+
+
 //rotation Shader
 // Vertex Shader
+
 var rotation_VSHADER =
   `precision mediump float;
   attribute vec4 a_Position;
