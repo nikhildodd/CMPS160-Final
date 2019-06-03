@@ -242,6 +242,7 @@ class Renderer {
   }
   drawGameOver(end){
   document.getElementById('bgm').pause();
+document.getElementById('gameoverSound').play();
 
           end.clearRect(0, 0, 400, 400); // Clear <hud>
   // Draw triangle with white lines
@@ -269,6 +270,7 @@ class Renderer {
 
   }
     drawStartMessage(start){
+
 document.getElementById('bgm').play();
 
       start.clearRect(0, 0, 400, 400); // Clear <hud>

@@ -239,6 +239,8 @@ document.getElementById('audio').play();
                 isGameOver = false;
                 resetIt = true;
                 moveCount = 0;
+document.getElementById('gameoverSound').pause();
+
             this.camera.eye = new Vector3([0, 0, -15.5]);
             this.camera.center  = new Vector3([0, 0,-1]);
              this.camera.up      = new Vector3([0, 1, 0]);
