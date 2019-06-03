@@ -5,6 +5,7 @@ var lavaDeath = false;
 var GOAL = false;
 
 function main() {
+
      map =          [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
                     [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,4],
                     [4,2,2,2,2,2,2,2,2,0,2,0,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,4],
@@ -308,9 +309,4 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
 
 
 }
-function startGame() {
-  //myGamePiece = new component(30, 30, "red", 10, 120);
-  var myMusic = new sound("Coda- Bloody stream (Instumental).mp3");
-  myMusic.play();
-  myGameArea.start();
-}
+
