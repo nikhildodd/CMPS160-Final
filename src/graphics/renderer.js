@@ -1,4 +1,5 @@
 var _renderer = null;
+var isGameOver = false;
 /**
  * Specifies a WebGL render. Used alongside Spring 2019 CMPS 160's Scene,
  * Camera, Geometry, and other subclasses.
@@ -97,6 +98,11 @@ class Renderer {
             }
             if(lavaDeath==true){
               this.drawGameOver(this.end);
+            }
+            if(resetIt){
+              this.end.clearRect(0, 0, 400, 400); // Clear <hud>
+
+              resetIt = false;
             }
 
             // Callback function in the case user wants to change the
@@ -240,12 +246,12 @@ class Renderer {
       end.fillText('GAME OVER', 65, 200);
       }else if (lavaDeath==true){
         end.fillText('DEATH BY LAVA', 15, 200);
+        lavaDeath = false;
       }
       end.font = '25px "Chalkboard"';
-      end.fillText('refresh to restart', 115, 250);
-      scene.clearGeometries();
+      end.fillText('press b to restart', 115, 250);
 
-      gameover=true;
+      isGameOver = true;
 
   }
     loadTexture(texture, image) {

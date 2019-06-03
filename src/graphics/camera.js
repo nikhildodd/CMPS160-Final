@@ -13,7 +13,7 @@ class Camera {
     * @constructor
     * @returns {Camera} Camera object created
     */
-    constructor(shader) {
+    constructor(shader,reset) {
         this.speed = 0.3;
 
         // Camera view attributes
@@ -200,7 +200,11 @@ class Camera {
     updateView() {
 
       console.log(this.eye);
+      // if(resetIt){
+      //     this.eye = new Vector3([0, 0, -15.5]);
+      //     resetIt = false;
 
+      // }
       if(((this.eye.elements[2] > -11.258 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 8.543))
         || ((this.eye.elements[2] > -13.334 && this.eye.elements[2] < -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
         || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)

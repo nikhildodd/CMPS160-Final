@@ -239,7 +239,7 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
 })
 // load walls
 
-    inputHandler.readTexture("objs/gayboi.jpg", function(image) {
+    inputHandler.readTexture("objs/wooden5.jpg", function(image) {
     for(var i = 0; i < map.length; i++){
       for(var j = 0; j < map[i].length; j++){
           if((map[i][j] != 0)) {
@@ -252,19 +252,7 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
       }
     })
 
-//load path
-    inputHandler.readTexture("objs/wooden.jpg", function(image) {
-    for(var i = 0; i < path.length; i++){
-      for(var j = 0; j < path[i].length; j++){
-          if((path[i][j] != 0)) {
-            if((path[i][j]!=2.01)){
-              var pathWall = new Cube(shader, -16 + i, -0.5, -16 + j, 0.5, path[i][j], image,[1,0,0,1]);
-              scene.addGeometry(pathWall);
-            }
-          }
-        }
-      }
-    })
+
 
 //lava puddles
 
