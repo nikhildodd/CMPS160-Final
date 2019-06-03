@@ -187,10 +187,10 @@ class InputHandler {
 
           }else if (keyName == "ArrowUp"){//up
             this.camera.pan(10);
-          
+
           }else if (keyName == "ArrowDown"){ //down
             this.camera.pan(-10);
-        }
+          }
     }
 
     /*

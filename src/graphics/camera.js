@@ -151,7 +151,7 @@ class Camera {
       // Calculate the n camera axis
       var dir = this.speed;
       var v = this.eye.sub(this.center); //subtract
-      v = v.normalize()
+      v = v.normalize();
 
       // Calculate the u camera axis
       var u = this.up; //cross product
@@ -163,6 +163,14 @@ class Camera {
       // Add the direction vector to both the eye and center positions
       this.eye = this.eye.add(u);
       this.center = this.center.add(u);
+
+      if(this.eye.elements[1] == 2){
+        this.eye.elements[1] = 0;
+        u = u.normalize();
+        v = v.normalize();
+        this.center = this.center.add(u);
+        console.log(this.center);
+      }
 
       this.updateView();
 
@@ -194,11 +202,13 @@ class Camera {
       console.log(this.eye);
 
       if(((this.eye.elements[2] > -11.258 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 8.543))
-        || ((this.eye.elements[2] > -13.674 && this.eye.elements[2] < -13.6414) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
+        || ((this.eye.elements[2] > -13.334 && this.eye.elements[2] < -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
         || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)
         || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.159) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 5.420))){
             lavaDeath = true;
       }
+
+       console.log(this.eye.elements[0]);
        console.log(this.eye.elements[2]);
 
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],
