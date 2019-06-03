@@ -22,7 +22,7 @@ function main() {
                     [4,0,0,0,2,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,4],
                     [4,2,2,2,2,0,0,2,2,2,2,2,0,0,2,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,4],
                     [4,0,0,0,2.01,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,4], //change the 2 here to 2.01 after
-                    [4,2,2,2,2,0,0,2,2,2,2,2,2,2,2,0,0,0,1,0,0,0,2,0,0,2,0,0,2,0,0,4],
+                    [4,2,2,2,2,0,0,2,2,2,2,2,2,2,2,0,0,0,0.9,0,0,0,2,0,0,2,0,0,2,0,0,4],
                     [4,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,4],
                     [4,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,2,0,0,4],
                     [4,0,0,0,2,0,0,2,2,2,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,2,0,0,4],
@@ -249,8 +249,10 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
       for(var j = 0; j < map[i].length; j++){
           if((map[i][j] != 0)) {
             if((map[i][j]!=2.01)){
+              if(map[i][j]!=0.9){
               var wallCube = new Walls(shader, -16 + i, -0.5, -16 + j, 0.5, map[i][j], image,[1,0,0,1]);
               scene.addGeometry(wallCube);
+            }
             }
           }
         }
@@ -279,6 +281,17 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
       var doorCube = new Walls(shader, -16 + 16, -0.5, -16 + 4, 0.5, map[16][4], image,[1,0,0,1]);
       scene.addGeometry(doorCube);
   })
+    inputHandler.readTexture("objs/goal.jpg", function(image){
+      for(var i = 0; i < lava.length; i++){
+        for(var j = 0; j < lava[i].length; j++){
+          if((map[i][j] ==0.9)) {
+              //var puddle = new Walls(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
+              var goal = new Cube(shader, -16 + i, -0.5, -16 + j, 0.6, map[i][j], image,[1,0,0,1]);
+              scene.addGeometry(goal);
+          }
+        }
+      }
+    })
 
 /*  inputHandler.readTexture("objs/dirt.jpg", function(image) {
       var doorCube = new Cube(shader, -16 + 16, -0.5, -16 + 4, 0.5, lava[17][18], image,[1,0,0,1]);

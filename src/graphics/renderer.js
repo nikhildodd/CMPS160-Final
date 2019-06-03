@@ -111,9 +111,11 @@ class Renderer {
             }else{
               this.startMSG.clearRect(0,0,400,400);
             }
+            if(!isGameOver){
             if(GOAL){
               this.drawGoalMessage(this.goalMSG);
             }
+          }
 
             // Callback function in the case user wants to change the
             // geometry before the draw call
@@ -255,7 +257,7 @@ class Renderer {
       if(lavaDeath==false){
       end.fillText('GAME OVER', 65, 200);
       }else if (lavaDeath==true){
-        end.fillText('DEATH BY LAVA', 15, 200);
+        end.fillText('lava killed u', 70, 200);
         lavaDeath = false;
       }
       end.font = '25px "Chalkboard"';
