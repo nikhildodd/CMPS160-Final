@@ -2,6 +2,7 @@ var shader = null;
 var scene = null;
 var map = null;
 var lavaDeath = false;
+var GOAL = false;
 
 function main() {
      map =          [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
@@ -140,11 +141,15 @@ function main() {
   canvas = document.getElementById("webgl");
   var hud = document.getElementById("hud");
   var gameover = document.getElementById("gameover");
+  var doormsg = document.getElementById("doorMessage");
+  var goalmsg = document.getElementById("goalMessage");
   // Retrieve WebGL rendering context
   var gl = getWebGLContext(canvas);
   var ctx = hud.getContext('2d');
   var end = gameover.getContext('2d');
-  if (!gl || !ctx || !end) {
+  var startMSG = doormsg.getContext('2d');
+  var goalMSG  = goalmsg.getContext('2d');
+  if (!gl || !ctx || !end || !startMSG || !goalMSG) {
     console.log("Failed to get WebGL rendering context.");
     return;
   }
@@ -165,7 +170,7 @@ function main() {
   scene.setLight(light);
   var camera = new Camera();
 
-  var inputHandler = new InputHandler(canvas,hud,gameover, scene, camera);
+  var inputHandler = new InputHandler(canvas,hud,gameover,startMSG,goalMSG, scene, camera);
 
   // Initialize shader
   shader = new Shader(gl, ASG4_VSHADER, ASG4_FSHADER);
@@ -285,7 +290,7 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
   scene.addGeometry(sphere1);
 
   // Initialize renderer with scene and camera
-  renderer = new Renderer(gl,ctx,end, scene, camera);
+  renderer = new Renderer(gl,ctx,end,startMSG,goalMSG,scene, camera);
   renderer.start();
 
 

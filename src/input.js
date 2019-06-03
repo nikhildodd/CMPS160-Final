@@ -18,10 +18,12 @@ class InputHandler {
      * Initializes the event handeling functions within the program.
      */
 
-    constructor(canvas,hud,gameover, scene, camera) {
+    constructor(canvas,hud,gameover,start,goal, scene, camera) {
       this.canvas = canvas;
       this.hud = hud;
       this.gameover =gameover;
+      this.start = start;
+      this.goal = goal;
       this.scene  = scene;
       this.camera = camera;
       this.zoom = 1;
@@ -95,6 +97,42 @@ class InputHandler {
         console.log("mouse scrolled");
        _inputHandler.mouseWheel(ev);
      };
+      this.start.onmousedown = function(ev) {
+        _inputHandler.mouseClick(ev);
+        mouseDown = true;
+      }
+      this.start.onmouseup = function(ev){
+        mouseDown = false;
+      }
+
+      this.start.onmousemove = function(ev) {
+        if(mouseDown){
+          _inputHandler.mouseMove(ev);
+          }
+
+      }
+      this.start.onwheel = function(ev) {
+        console.log("mouse scrolled");
+       _inputHandler.mouseWheel(ev);
+     };
+      this.goal.onmousedown = function(ev) {
+        _inputHandler.mouseClick(ev);
+        mouseDown = true;
+      }
+      this.goal.onmouseup = function(ev){
+        mouseDown = false;
+      }
+
+      this.goal.onmousemove = function(ev) {
+        if(mouseDown){
+          _inputHandler.mouseMove(ev);
+          }
+      }
+      this.goal.onwheel = function(ev) {
+        console.log("mouse scrolled");
+       _inputHandler.mouseWheel(ev);
+     };
+
 
       // Keyboard Events
       document.addEventListener('keydown', function(ev) { _inputHandler.keyDown(ev); }, false);
@@ -144,23 +182,24 @@ class InputHandler {
         console.log("key down", keyName);
 
           if(keyName == "a") {
+            if(!GOAL)
             moveCount++;
             this.camera.truck(-1);
           }
           else if(keyName == "d") {
-
+            if(!GOAL)
               moveCount++;
               this.camera.truck(1);
           }
           else if(keyName == "w"){
-
+            if(!GOAL)
+               moveCount++;
               countUps++;
-              moveCount++;
               console.log(countUps);
               this.camera.dolly(-1);
           }
           else if(keyName == "s"){
-
+            if(!GOAL)
             moveCount++;
               this.camera.dolly(1);
           }else if(keyName == "z"){
@@ -181,19 +220,18 @@ class InputHandler {
           }else if (keyName == "n"){
               this.camera.jumpDownCommand();
           }else if (keyName == "ArrowLeft"){ //left
-            this.camera.tilt(-10);
+            this.camera.tilt(-20);
 
           }else if (keyName == "ArrowRight"){ //right
-            this.camera.tilt(10);
+            this.camera.tilt(20);
 
           }else if (keyName == "ArrowUp"){//up
-            this.camera.pan(10);
+            this.camera.pan(20);
 
           }else if (keyName == "ArrowDown"){ //down
-            this.camera.pan(-10);
+            this.camera.pan(-20);
           }else if (keyName == "b"){
             if(isGameOver){
-              console.log("boof")
                 isGameOver = false;
                 resetIt = true;
                 moveCount = 0;
