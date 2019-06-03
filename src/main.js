@@ -128,7 +128,7 @@ function main() {
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -267,12 +267,12 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
 
 //water puddles
 
-    inputHandler.readTexture("objs/water.jpg", function(image){
+    inputHandler.readTexture("objs/lava.jpg", function(image){
       for(var i = 0; i < lava.length; i++){
         for(var j = 0; j < lava[i].length; j++){
           if((lava[i][j] != 0)) {
               //var puddle = new Walls(shader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
-              var puddle = new Cube(rotationShader, -16 + i, -1.47, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
+              var puddle = new Cube(rotationShader, -16 + i, -1.0, -16 + j, 0.5, lava[i][j], image,[1,0,0,1]);
               scene.addGeometry(puddle);
           }
         }
