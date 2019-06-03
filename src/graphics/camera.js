@@ -207,7 +207,7 @@ class Camera {
         || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.159) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 5.420))){
             lavaDeath = true;
       }
-
+      
        console.log(this.eye.elements[0]);
        console.log(this.eye.elements[2]);
 
