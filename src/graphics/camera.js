@@ -168,6 +168,7 @@ class Camera {
 
         if(this.eye.elements[1] == 2){
           this.eye.elements[1] = 0;
+          this.updateView();
         }
         u = u.normalize();
         v = v.normalize();
