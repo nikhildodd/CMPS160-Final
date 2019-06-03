@@ -162,8 +162,7 @@ class InputHandler {
 
             moveCount++;
               this.camera.dolly(1);
-          }
-          else if(keyName == "z"){
+          }else if(keyName == "z"){
               if(perspectiveMode){
                   perspectiveMode = false;
                   orthoMode = true;
@@ -174,16 +173,24 @@ class InputHandler {
                   perspectiveMode = true;
                   this.camera.changeMode(perspectiveMode);
               }
-          }
-          else if(keyName == "p"){
+          }else if(keyName == "p"){
               this.camera.crazyAngle();
-          }
-          else if(keyName == "j"){
+          }else if(keyName == "j"){
               this.camera.jumpUpCommand();
-          }
-          else if (keyName == "n"){
+          }else if (keyName == "n"){
               this.camera.jumpDownCommand();
-          }
+          }else if (keyName == "ArrowLeft"){ //left
+            this.camera.tilt(-5);
+            console.log("Fuck");
+          }else if (keyName == "ArrowRight"){ //right
+            this.camera.tilt(5);
+
+          }else if (keyName == "ArrowUp"){//up
+            this.camera.pan(5);
+          
+          }else if (keyName == "ArrowDown"){ //down
+            this.camera.pan(-5);
+        }
     }
 
     /*

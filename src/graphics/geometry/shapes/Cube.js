@@ -30,7 +30,7 @@ class Cube extends Geometry {
       this.translateToPosition.setTranslate(-x,-y,-z);
 
       this.rotationMatrix = new Matrix4();
-      this.rotationMatrix.setRotate(15,1,1,1);
+      this.rotationMatrix.setRotate(15,0,1,0);
 
       // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
       this.interleaveVertices();
