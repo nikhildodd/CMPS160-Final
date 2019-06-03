@@ -92,7 +92,10 @@ class Renderer {
             }
 
             this.drawHUD(this.ctx);
-            if(moveCount == 200){
+            if(moveCount == 300){
+              this.drawGameOver(this.end);
+            }
+            if(lavaDeath==true){
               this.drawGameOver(this.end);
             }
 
@@ -233,7 +236,11 @@ class Renderer {
       // Draw white letters
       end.font = '50px "Chalkboard"';
       end.fillStyle = 'rgba(255, 0, 0, 1)'; // Set white to the color of letters
+      if(lavaDeath==false){
       end.fillText('GAME OVER', 65, 200);
+      }else if (lavaDeath==true){
+        end.fillText('DEATH BY LAVA', 15, 200);
+      }
       end.font = '25px "Chalkboard"';
       end.fillText('refresh to restart', 115, 250);
       scene.clearGeometries();

@@ -190,8 +190,16 @@ class Camera {
     }
 
     updateView() {
+      if(((this.eye.elements[2] > -11.258 && this.eye.elements[2] < -9.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 8.543))
+        || ((this.eye.elements[2] > -13.674 && this.eye.elements[2] < -13.6414) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
+        || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)){
+        lavaDeath = true;
+      }
+       console.log(this.eye.elements[2]);
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],
                                   this.center.elements[0], this.center.elements[1], this.center.elements[2],
                                   this.up.elements[0], this.up.elements[1], this.up.elements[2]);
+      
+      
     }
 }
