@@ -149,6 +149,7 @@ class Camera {
     jumpUpCommand(){
       //space bar goes up vertically (v axis)
       // Calculate the n camera axis
+
       var dir = this.speed;
       var v = this.eye.sub(this.center); //subtract
       v = v.normalize();
@@ -158,19 +159,21 @@ class Camera {
       u = u.normalize();
 
       // Scale the u axis to the desired distance to move
-      v = v.mul(dir * this.speed);
+      //v = v.mul(dir * this.speed);
 
       // Add the direction vector to both the eye and center positions
       this.eye = this.eye.add(u);
       this.center = this.center.add(u);
 
-      if(this.eye.elements[1] == 2){
-        this.eye.elements[1] = 0;
+
+        if(this.eye.elements[1] == 2){
+          this.eye.elements[1] = 0;
+        }
         u = u.normalize();
         v = v.normalize();
         this.center = this.center.add(u);
         console.log(this.center);
-      }
+    //  }
 
       this.updateView();
 

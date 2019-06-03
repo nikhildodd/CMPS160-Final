@@ -308,3 +308,9 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
 
 
 }
+function startGame() {
+  //myGamePiece = new component(30, 30, "red", 10, 120);
+  var myMusic = new sound("Coda- Bloody stream (Instumental).mp3");
+  myMusic.play();
+  myGameArea.start();
+}
