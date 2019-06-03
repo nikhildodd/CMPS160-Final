@@ -157,6 +157,10 @@ function main() {
   //Enable depth DEPTH_TEST
   gl.enable(gl.DEPTH_TEST);
 
+  var pixelValues = new Uint8Array(4);
+  gl.readPixels(10, 35, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixelValues);
+  console.log("poop",pixelValues);
+
 
   // Calculate the view projection matrix
   //var viewProjMatrix = new Matrix4();
