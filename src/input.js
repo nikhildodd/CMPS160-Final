@@ -180,16 +180,16 @@ class InputHandler {
           }else if (keyName == "n"){
               this.camera.jumpDownCommand();
           }else if (keyName == "ArrowLeft"){ //left
-            this.camera.tilt(-5);
-            console.log("Fuck");
+            this.camera.tilt(-10);
+
           }else if (keyName == "ArrowRight"){ //right
-            this.camera.tilt(5);
+            this.camera.tilt(10);
 
           }else if (keyName == "ArrowUp"){//up
-            this.camera.pan(5);
+            this.camera.pan(10);
           
           }else if (keyName == "ArrowDown"){ //down
-            this.camera.pan(-5);
+            this.camera.pan(-10);
         }
     }
 

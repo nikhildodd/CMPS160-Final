@@ -1,6 +1,7 @@
 var shader = null;
 var scene = null;
 var map = null;
+var lavaDeath = false;
 
 function main() {
      map =          [[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
@@ -291,6 +292,7 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
       scene.addGeometry(doorCube);
   })
   */
+
   var sphere1 = new Sphere(newShader, 20,0,20,0); // (shader,segment,x,y,z);
   scene.addGeometry(sphere1);
 
