@@ -96,9 +96,11 @@ class Renderer {
 
             this.drawHUD(this.ctx);
             if(moveCount == 300){
+              if(!GOAL)
               this.drawGameOver(this.end);
             }
             if(lavaDeath==true){
+              if(!GOAL)
               this.drawGameOver(this.end);
             }
             if(resetIt){
