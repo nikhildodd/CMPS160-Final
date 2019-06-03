@@ -14,7 +14,7 @@ class Camera {
     * @returns {Camera} Camera object created
     */
     constructor(shader,reset) {
-        this.speed = 0.3;
+        this.speed = 0.6;
 
         // Camera view attributes
         this.eye     = new Vector3([0, 0, -15.5]);
@@ -200,20 +200,18 @@ class Camera {
     updateView() {
 
       console.log(this.eye);
-      // if(resetIt){
-      //     this.eye = new Vector3([0, 0, -15.5]);
-      //     resetIt = false;
 
-      // }
-      if(((this.eye.elements[2] > -11.258 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 8.543))
+      if(((this.eye.elements[2] > -11.75 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 9.23))
         || ((this.eye.elements[2] > -13.334 && this.eye.elements[2] < -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
         || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)
-        || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.159) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 5.420))){
+        || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.159) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 5.420)))
+      {
             lavaDeath = true;
       }
+      if(((this.eye.elements[2] > 1.306 && this.eye.elements[2] < 2.2) && (this.eye.elements[0] > 0.6) && (this.eye.elements[0] < 1.545))){
+        GOAL = true;
+      }
 
-       console.log(this.eye.elements[0]);
-       console.log(this.eye.elements[2]);
 
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],
                                   this.center.elements[0], this.center.elements[1], this.center.elements[2],
