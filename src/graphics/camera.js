@@ -190,6 +190,7 @@ class Camera {
     }
 
     updateView() {
+      console.log(this.eye);
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],
                                   this.center.elements[0], this.center.elements[1], this.center.elements[2],
                                   this.up.elements[0], this.up.elements[1], this.up.elements[2]);
