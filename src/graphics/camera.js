@@ -208,16 +208,15 @@ class Camera {
       {
             lavaDeath = true;
       }
-<<<<<<< HEAD
-      
+
        console.log(this.eye.elements[0]);
        console.log(this.eye.elements[2]);
-=======
+
       if(((this.eye.elements[2] > 1.306 && this.eye.elements[2] < 2.2) && (this.eye.elements[0] > 0.6) && (this.eye.elements[0] < 1.545))){
         GOAL = true;
       }
 
->>>>>>> eb9879420201f6edb645464537b8e76187879fbe
+
 
         this.viewMatrix.setLookAt(this.eye.elements[0], this.eye.elements[1], this.eye.elements[2],
                                   this.center.elements[0], this.center.elements[1], this.center.elements[2],
