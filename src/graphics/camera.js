@@ -14,7 +14,7 @@ class Camera {
     * @returns {Camera} Camera object created
     */
     constructor(shader,reset) {
-        this.speed = 0.6;
+        this.speed = 0.4;
 
         // Camera view attributes
         this.eye     = new Vector3([0, 0, -15.5]);
@@ -202,9 +202,9 @@ class Camera {
       console.log(this.eye);
 
       if(((this.eye.elements[2] > -11.75 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 9.23))
-        || ((this.eye.elements[2] > -13.334 && this.eye.elements[2] < -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -11.629))
+        || ((this.eye.elements[2] < -13.334 && this.eye.elements[2] > -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -12))
         || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)
-        || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.159) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 5.420)))
+        || ((this.eye.elements[2] > 4.116 && this.eye.elements[2] < 4.5) && (this.eye.elements[0] > 3.920) && (this.eye.elements[0] < 6)))
       {
             lavaDeath = true;
       }
