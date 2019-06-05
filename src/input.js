@@ -32,20 +32,20 @@ class InputHandler {
       this.deltaX = 0;
       this.deltaY = 0;
       // Mouse Events
-      this.canvas.onmousedown = function(ev) {
-        var x = ev.clientX, y = ev.clientY;
-        var rect = ev.target.getBoundingClientRect();
-        if (rect.left <= x && x < rect.right && rect.top <= y && y < rect.bottom) {
-      // If pressed position is inside <canvas>, check if it is above object
-            var x_in_canvas = x - rect.left, y_in_canvas = rect.bottom - y;
-            var picked = check(gl, n, x_in_canvas, y_in_canvas, currentAngle, u_Clicked, viewProjMatrix, u_MvpMatrix);
-              if (picked){
-                alert('The cube was selected! ');
-              }
-        _inputHandler.mouseClick(ev);
-        mouseDown = true;
-        }
-      }
+      // this.canvas.onmousedown = function(ev) {
+      //   var x = ev.clientX, y = ev.clientY;
+      //   var rect = ev.target.getBoundingClientRect();
+      //   if (rect.left <= x && x < rect.right && rect.top <= y && y < rect.bottom) {
+      // // If pressed position is inside <canvas>, check if it is above object
+      //       var x_in_canvas = x - rect.left, y_in_canvas = rect.bottom - y;
+      //       var picked = check(gl, n, x_in_canvas, y_in_canvas, currentAngle, u_Clicked, viewProjMatrix, u_MvpMatrix);
+      //         if (picked){
+      //           alert('The cube was selected! ');
+      //         }
+      //   _inputHandler.mouseClick(ev);
+      //   mouseDown = true;
+      //   }
+      // }
       this.canvas.onmouseup = function(ev){
         mouseDown = false;
       }
@@ -158,7 +158,24 @@ class InputHandler {
 
 
     }
+    click(ev){
 
+      // Print x,y coordinates.
+      console.log(ev.clientX, ev.clientY);
+      //  MAP ev.clientX and ev.clientY to WEBGL coordinate system using function click
+      // from book (page 51)
+      var x = ev.clientX; // x coordinate of a mouse pointer
+      var y = ev.clientY; // y coordinate of a mouse pointer
+
+      var tri = ev.target.getBoundingClientRect();
+
+      x = ((x - tri.left) - canvas.height/2)/(canvas.height/2);
+      y = (canvas.width/2 - (y - tri.top))/(canvas.width/2);
+      if(x >= -1 && x <= 1 && y >= -1 && y <= 1){
+        console.log("poop");
+      }
+
+    }
     mouseMove(ev) {
         var movementX = ev.movementX;
         console.log("movementX", movementX);

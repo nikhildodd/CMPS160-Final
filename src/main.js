@@ -160,7 +160,7 @@ function main() {
 
   var pixelValues = new Uint8Array(4);
   gl.readPixels(10, 35, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixelValues);
-  console.log("poop",pixelValues);
+  console.log("poop1",pixelValues);
 
 
   // Calculate the view projection matrix
@@ -313,4 +313,3 @@ inputHandler.readTexture("objs/dirt.jpg", function(image) {
 
 
 }
-

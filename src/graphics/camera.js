@@ -179,6 +179,7 @@ class Camera {
       this.updateView();
 
     }
+
     jumpDownCommand(){
       //space bar goes up vertically (v axis)
       // Calculate the n camera axis
@@ -204,7 +205,13 @@ class Camera {
     updateView() {
 
       console.log(this.eye);
-
+      // for(var i = 0; i < map.length; i++){
+      //   for(var j = 0; j < map[i].length; j++){
+      //     if(map[i][j] == 2){
+      //       return;
+      //     }
+      //   }
+      // }
       if(((this.eye.elements[2] > -11.75 && this.eye.elements[2] < -10.785) && (this.eye.elements[0] > 7.503 && this.eye.elements[0] < 9.23))
         || ((this.eye.elements[2] < -13.334 && this.eye.elements[2] > -15.5) && (this.eye.elements[0] > -13.429 && this.eye.elements[0] < -12))
         || (this.eye.elements[0] == -10.021 && this.eye.elements[2] == -10.561)
@@ -212,7 +219,10 @@ class Camera {
       {
             lavaDeath = true;
       }
-
+      if(this.eye.elements[2] == -2.7 && this.eye.elements[0] == 0){
+        this.eye.elements[0] = 0;
+        this.eye.elements[2] = -2.7;
+      }
        console.log(this.eye.elements[0]);
        console.log(this.eye.elements[2]);
 
